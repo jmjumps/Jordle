@@ -1,0 +1,17 @@
+﻿@page "/wordle"
+<PageTitle>Counter</PageTitle>
+
+<p role="status">Current count: @results</p>
+
+<button class="btn btn-primary" @onclick="UpdateWordList">Update</button>
+
+@code {
+    private WordleGame myWordle = new WordleGame();
+    private string results = "Whee";
+
+    private void UpdateWordList()
+    {
+        myWordle.UpdateCandidates();
+        results = String.Join(',', myWordle.CandidateWords);
+    }
+}
